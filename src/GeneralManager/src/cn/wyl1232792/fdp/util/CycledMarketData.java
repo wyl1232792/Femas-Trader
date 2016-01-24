@@ -1,4 +1,4 @@
-package cn.wyl1232792.fdp;
+package cn.wyl1232792.fdp.util;
 
 class CycledMarketData {
 	int minutesPerCycle;
