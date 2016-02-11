@@ -1,5 +1,5 @@
 package cn.wyl1232792.fdp.server;
 
-class InsideSocketServer {
-
+class InsideSocketServer extends InsideServer {
+	
 }

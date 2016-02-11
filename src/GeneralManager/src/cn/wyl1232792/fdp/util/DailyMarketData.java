@@ -3,11 +3,11 @@ package cn.wyl1232792.fdp.util;
 class DailyMarketData extends CycledMarketData {
 	
 	public DailyMarketData() {
-		type = 0;
-		minutesPerCycle = 240;  
+		this(Codes.TYPE_STOCK);
 	}
 	
 	public DailyMarketData(int t) {
 		type = t;
+		minutesPerCycle = 240;
 	}
 }
