@@ -1,14 +1,17 @@
 package cn.wyl1232792.fdp.server;
 
 
-abstract class InsideServer {
-	public InsideServer() {}
-	public void init() {}
-	private Runnable main;
-	public void setRunnable(Runnable r) {
-		main = r;
+abstract class InsideServer{
+	Reciever _reciever;
+	public InsideServer(Reciever r) {
+		_reciever = r;
 	}
-	public void callBack() {
-		main.run();
+	public String latestContext() { return null; }
+	abstract public void init() throws Exception;
+	abstract public void close();
+	abstract public void restart();
+	abstract public void clearWorks();
+	public void callback() {
+		_reciever.recieve(null);
 	}
 }
