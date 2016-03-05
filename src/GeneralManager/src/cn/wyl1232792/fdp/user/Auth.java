@@ -4,11 +4,14 @@ public class Auth {
 	public final static int GROUP_ADMIN = 0;
 	public final static int GROUP_INVESTOR = 1;
 	public final static int GROUP_USER = 2;
+	public final static int GROUP_GUEST = 3;
 	
 	public final static int OPT_LOGIN = 0;
 	//TO be completed
 	
-	boolean is_valid_user;
+	int _group;
+	boolean loginFailed;
+	String error_msg;
 		
 	public Auth(String user_token) {
 	}
@@ -26,7 +29,15 @@ public class Auth {
 		
 	}
 	
+	public int getGroup() {
+		return _group;
+	}
+	
 	public boolean check() {
-		return is_valid_user;
+		return !loginFailed;
+	}
+	
+	public String getErrorMsg() {
+		return error_msg;
 	}
 }
