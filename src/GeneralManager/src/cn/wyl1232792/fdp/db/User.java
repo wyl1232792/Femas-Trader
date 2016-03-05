@@ -36,4 +36,8 @@ public class User implements DatabaseModel {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public int getUserGroup() {
+		return _auth.getGroup();
+	}
 }
