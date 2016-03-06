@@ -9,15 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.wyl1232792.fdp.db.User;
-import cn.wyl1232792.fdp.user.UserFactory;
+import cn.wyl1232792.fdp.factory.UserFactory;
 
 abstract public class Controller {
 
 	Map<Integer, Method> methods;
-	
+	UserFactory _userFactory;
 	public Controller() {
 		methods = new HashMap<Integer, Method>();
 		registerMethods();
+		_userFactory = new UserFactory();
 	}
 	
 	protected void registerMethod(int opt, String m) {
@@ -50,9 +51,9 @@ abstract public class Controller {
 		
 		//no user_token
 		if ((s = request.getHeader("user_token")) == null)
-			u = UserFactory.getGuestUser();
+			u = _userFactory.getGuestUser();
 		else
-			u = UserFactory.getUserByToken(s);
+			u = _userFactory.getUserByToken(s);
 		
 		Method m = methods.get(new Integer(opt));
 		//no methods
@@ -60,7 +61,7 @@ abstract public class Controller {
 			echo404(response);
 		else
 			try {
-				m.invoke(this.getClass(), u, request, response);
+				m.invoke(this, u, request, response);
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				e.printStackTrace();
 			}

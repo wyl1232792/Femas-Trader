@@ -37,7 +37,10 @@ public class Router extends AbstractHandler {
 			HttpServletRequest request,
 			HttpServletResponse response)
 			throws IOException, ServletException {
-		controllers.get(target).handle(Integer.parseInt(request.getParameter("opt")), target, request, response);
+		if (controllers.get(target) == null || request.getParameter("opt") == null)
+			response.setStatus(404);
+		else	
+			controllers.get(target).handle(Integer.parseInt(request.getParameter("opt")), target, request, response);
 		baseRequest.setHandled(true);
 	}
 	

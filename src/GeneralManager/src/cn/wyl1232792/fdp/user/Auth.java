@@ -14,6 +14,8 @@ public class Auth {
 	String error_msg;
 		
 	public Auth(String user_token) {
+		if (user_token == null)
+			_group = GROUP_GUEST;
 	}
 	
 	public Auth(String username, String password) {

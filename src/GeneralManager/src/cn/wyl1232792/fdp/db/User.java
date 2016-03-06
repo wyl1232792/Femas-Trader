@@ -5,11 +5,20 @@ import java.sql.ResultSet;
 
 import cn.wyl1232792.fdp.user.Auth;
 
-public class User implements DatabaseModel {
+public class User extends DatabaseModel {
+
 	int _id;
 	String _username;
 	String _password;
 	Auth _auth;
+	
+	public User() {
+		//produce guest user
+		_id = 0;
+		_username = "guest";
+		_password = "";
+		_auth = new Auth(null);
+	}
 	
 	@Override
 	public boolean readFromResultSet(ResultSet rs) {
@@ -39,5 +48,30 @@ public class User implements DatabaseModel {
 	
 	public int getUserGroup() {
 		return _auth.getGroup();
+	}
+	public String getUsername() {
+		return _username;
+	}
+
+	public void setUsername(String _username) {
+		this._username = _username;
+	}
+
+	public String getPassword() {
+		return _password;
+	}
+
+	public void setPassword(String _password) {
+		this._password = _password;
+	}
+
+	@Override
+	public String generateColumns() {
+		return "(`username`, `password`)";
+	}
+
+	@Override
+	public String generateItemSql() {
+		return "('" + _username + "', '" + _password + "')";
 	}
 }
