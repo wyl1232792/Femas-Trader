@@ -5,6 +5,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class Encrypt {
 	public static String md5(String text) {
+		if (text == null)
+			return "";
 		try {  
             MessageDigest md = MessageDigest.getInstance("MD5");  
             md.update(text.getBytes());  

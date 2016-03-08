@@ -24,8 +24,11 @@ public class InsideHttpServer extends InsideServer {
 	
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		try {
+			_server.stop();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

@@ -49,11 +49,11 @@ abstract public class Controller {
 		User u;
 		String s;
 		
-		//no user_token
-		if ((s = request.getHeader("user_token")) == null)
-			u = _userFactory.getGuestUser();
+		//u = Guest if user_token = null
+		if (request.getHeader("user_token") == null)
+			u = _userFactory.getUserByToken(request.getParameter("user_token"));
 		else
-			u = _userFactory.getUserByToken(s);
+			u = _userFactory.getUserByToken(request.getHeader("user_token"));
 		
 		Method m = methods.get(new Integer(opt));
 		//no methods

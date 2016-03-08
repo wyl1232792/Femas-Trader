@@ -23,6 +23,7 @@ public class Router extends AbstractHandler {
 	}
 	
 	private void registerControllers() {
+		registerController("/test", new TestController());
 		registerController("/user", new UserController());
 	}
 	

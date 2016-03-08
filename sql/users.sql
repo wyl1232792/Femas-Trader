@@ -15,15 +15,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) NOT NULL UNIQUE,
   `password` varchar(128) NOT NULL,
+  `group` int(11) NOT NULL,
   `user_token` varchar(64),
   `create_time` datetime,
   `last_login` datetime,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
---
--- 转存表中的数据 `user`
---
+
+INSERT INTO `users`
+(`username`, `password`, `group`) VALUES
+('admin', 'c6c446e0e5b093d4a93f9614fd58f124', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

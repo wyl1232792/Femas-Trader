@@ -16,7 +16,7 @@ public class QueryStatement {
 	public String select(int num, int offset) {
 		this.prepend("SELECT * FROM `"+ _table + '`');
 		if (num > 0)
-			this.append(" LIMIT " + num + " OFFSET " + offset);
+			this.append(" LIMIT " + num * (offset-1) + "," + num);
 		return _sql;
 	}
 	
@@ -48,6 +48,12 @@ public class QueryStatement {
 	
 	public QueryStatement where(String column, String opt, String value) {
 		this.append(((multiWhere) ? (" and ") : (" WHERE ")) + column + " " + opt + " " + value);
+		multiWhere = true;
+		return this;
+	}
+	
+	public QueryStatement whereString(String column, String opt, String value) {
+		this.append(((multiWhere) ? (" and ") : (" WHERE ")) + column + " " + opt + " '" + value + "'");
 		multiWhere = true;
 		return this;
 	}

@@ -11,7 +11,7 @@ abstract public class DatabaseHelper implements DatabaseHandler {
 	}
 	
 	public ResultSet simpleQuery(String sql) throws SQLException {
-		Statement statement = _connection.createStatement();
+		Statement statement = _connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 		return statement.executeQuery(sql);
 	}
 	
