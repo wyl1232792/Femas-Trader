@@ -4,6 +4,7 @@ import java.nio.charset.Charset;
 import java.util.function.Function;
 
 import org.eclipse.jetty.client.HttpClient;
+import org.json.JSONObject;
 
 class WebApiDataRetriever extends DataRetriever {
 	/*
@@ -41,6 +42,14 @@ class WebApiDataRetriever extends DataRetriever {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void getJson(String url, String method, String params, Function<JSONObject, Void> callback) {
+		sendSimpleRequest(url, method, params, (str) -> {
+			JSONObject jo = new JSONObject(str);
+			callback.apply(jo);
+			return null;
+		});
 	}
 
 	public void configClient() {

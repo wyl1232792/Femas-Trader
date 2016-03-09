@@ -16,12 +16,21 @@ public class FinancialDataPlatform {
 	
 	
 	public static void main(String[] args) {
+		//read configs
+		SystemConfig.readFromJson();
+		
+		//constructors
+		
+		//dependency injection
+		
+		//start to work
+		
 		try {
 			ihs.init();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}	
 	}
 	
 }

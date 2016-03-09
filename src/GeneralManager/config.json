@@ -1,0 +1,1 @@
+{"Database":"mysql","DatabaseUrl":"jdbc:mysql://localhost:3306/fd_platform?user=root&password=","SocketServerPort":23333,"HttpServerPort":8080}

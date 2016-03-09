@@ -1,5 +1,6 @@
 package cn.wyl1232792.fdp.network;
 
+//one instance should be able to handle the whole mduser of CTP
 abstract class DataRetriever {
 	int _mode;
 	public void setMode(int m) {

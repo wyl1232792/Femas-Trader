@@ -6,4 +6,5 @@ import java.sql.SQLException;
 interface DatabaseHandler {
 	abstract public void init();
 	abstract public ResultSet simpleQuery(String sql) throws SQLException ;
+	abstract public boolean executeQuery(String sql) throws SQLException;
 }
