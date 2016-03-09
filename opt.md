@@ -13,6 +13,9 @@
 
 ##Opts
 ###Controller: User
->	login: 1
->	logout: 2
->	check: 3
+*	OPT_REGISTER = 0  
+*	OPT_LOGIN = 1  
+*	OPT_USERINFO = 2  
+*	OPT_CHANGE_PASSWORD = 3  
+
+
